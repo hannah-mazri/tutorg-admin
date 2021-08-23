@@ -6,17 +6,20 @@ import { AccountRoutingModule } from './account-routing.module';
 import { LayoutComponent } from './layout.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
+import { SharedModule } from '../_components/shared.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        AccountRoutingModule
-    ],
-    declarations: [
-        LayoutComponent,
-        LoginComponent,
-        RegisterComponent
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
+    AccountRoutingModule,
+  ],
+  declarations: [
+    LayoutComponent,
+    LoginComponent,
+    RegisterComponent
+  ]
 })
-export class AccountModule { }
+export class AccountModule {
+}
