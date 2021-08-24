@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --output-path docs --base-href https://username.github.io/tutorg-admin/",
+    "build:prod": "ng build --configuration production --output-path docs --base-href https://username.github.io/tutorg-admin/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
