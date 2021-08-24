@@ -1,35 +1,46 @@
-﻿<split parentClasses="w-screeen min-h-screen">
-  <div class="w-1/2">illustration</div>
-  <div class="w-1/2">
-    <div class="card shadow-md rounded-lg bg-gray-50 w-80 p-5">
-      <h4 class="card-header font-bold text-2xl mt-3">Login</h4>
-      <div class="card-body mt-5">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="loginForm">
-          <stack>
-            <label for="username">Username</label>
-            <input type="text" formControlName="username" id="username" class="form-control border border-gray-200 rounded-lg mt-2 py-1.5 px-3"
-                   [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-              <div class="text-red-500 text-sm mt-1 ml-0.5" *ngIf="f.username.errors.required">Username is required</div>
-            </div>
-          </stack>
-          <stack parentClasses="mt-5">
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" id="password" class="form-control border border-gray-200 rounded-lg mt-2 py-1.5 px-3"
-                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div class="text-red-500 text-sm mt-1 ml-0.5" *ngIf="f.password.errors.required">Password is required</div>
-            </div>
-          </stack>
-          <div class="form-group flex justify-end space-x-2 mt-4">
-            <button [disabled]="loading" class="py-1.5 px-4 bg-green-300 rounded-md">
-              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Login
-            </button>
-            <a routerLink="../register" class="py-1.5 px-4 bg-indigo-200 rounded-md">Register</a>
-          </div>
-        </form>
-      </div>
+﻿<stack class="w-screen h-screen">
+  <nav class="py-8 px-10 h-20 flex justify-between items-center">
+    <h1 class="font-bold text-3xl">ttr.</h1>
+    <div class="flex items-center">
+      <span>New User?</span>
+      <a routerLink="../register" class="py-1.5 px-4 font-semibold text-indigo-500 hover:underline">Register</a>
     </div>
-  </div>
-</split>
+  </nav>
+  <split class="w-full h-full justify-center items-center space-x-12">
+    <login-illustration></login-illustration>
+    <stack class="h-[32rem] w-[24rem] px-5">
+      <div>
+        <h2 class="font-bold text-3xl">Welcome back!</h2>
+        <p class="text-gray-500 mt-1.5">Login to continue</p>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="loginForm" class="mt-12">
+        <stack>
+          <label for="username" class="text-gray-800">Username</label>
+          <input type="text" formControlName="username" id="username"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-1.5 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="username-feedback" *ngIf="f.username.errors.required">
+              Username is required
+            </div>
+          </div>
+        </stack>
+        <stack class="mt-8">
+          <label for="password" class="text-gray-800">Password</label>
+          <input type="password" formControlName="password" id="password"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-1.5 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="password-feedback" *ngIf="f.password.errors.required">
+              Password is required
+            </div>
+          </div>
+        </stack>
+        <button [disabled]="loading" class="mt-10 py-3 w-44 bg-indigo-400 hover:bg-indigo-500 transition rounded-3xl">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span class="uppercase text-white text-sm">Login</span>
+        </button>
+      </form>
+    </stack>
+  </split>
+</stack>

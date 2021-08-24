@@ -3,9 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'stack',
   template: `
-    <div class="flex flex-col" [ngClass]="parentClasses">
-      <ng-content></ng-content>
-    </div>
+    <ng-content></ng-content>
   `
 })
 export class StackComponent {

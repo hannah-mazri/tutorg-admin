@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SharedModule } from '@app/_components/shared.module';
 
 describe('LoginComponentFunctionalTestCases', () => {
   let component: LoginComponent;
@@ -12,7 +13,7 @@ describe('LoginComponentFunctionalTestCases', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule]
+      imports: [SharedModule, FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule]
     })
       .compileComponents();
   });
@@ -57,9 +58,9 @@ describe('LoginComponentFunctionalTestCases', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const usernameRequiredErrorMessage: HTMLInputElement = fixture.debugElement.nativeElement
-        .querySelector('#username~div .error-message').innerHTML;
+        .querySelector('.invalid #username-feedback').innerHTML;
       // @ts-ignore
-      expect(usernameRequiredErrorMessage).toEqual('Name is required.');
+      expect(usernameRequiredErrorMessage).toEqual('Username is required');
     });
   });
 
@@ -71,9 +72,9 @@ describe('LoginComponentFunctionalTestCases', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const passwordRequiredErrorMessage: HTMLInputElement = fixture.debugElement.nativeElement
-        .querySelector('#password~div .error-message').innerHTML;
+        .querySelector('.invalid #password-feedback').innerHTML;
       // @ts-ignore
-      expect(passwordRequiredErrorMessage).toEqual('Password is required.');
+      expect(passwordRequiredErrorMessage).toEqual('Password is required');
     });
   });
 
