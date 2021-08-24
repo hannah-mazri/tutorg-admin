@@ -7,9 +7,10 @@ import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-    form: FormGroup;
+    loginForm: FormGroup;
     loading = false;
     submitted = false;
+    loggedIn = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -20,14 +21,14 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.form = this.formBuilder.group({
+        this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+    get f() { return this.loginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.form.invalid) {
+        if (this.loginForm.invalid) {
             return;
         }
 

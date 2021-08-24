@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert.component';
 import { StackComponent } from './stack.component';
+import { SplitComponent } from '@app/_components/split.component';
 
 
 
@@ -9,6 +10,7 @@ import { StackComponent } from './stack.component';
   declarations: [
     AlertComponent,
     StackComponent,
+    SplitComponent,
   ],
   imports: [
     CommonModule
@@ -16,6 +18,7 @@ import { StackComponent } from './stack.component';
   exports: [
     AlertComponent,
     StackComponent,
+    SplitComponent,
   ]
 })
 export class SharedModule { }
