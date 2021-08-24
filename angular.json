@@ -126,8 +126,13 @@
               "devServerTarget": "angular-registration-login-example:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-registration-login-example"
 }
