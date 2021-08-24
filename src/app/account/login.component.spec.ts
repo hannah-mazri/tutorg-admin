@@ -60,7 +60,7 @@ describe('LoginComponentFunctionalTestCases', () => {
       const usernameRequiredErrorMessage: HTMLInputElement = fixture.debugElement.nativeElement
         .querySelector('.invalid #username-feedback').innerHTML;
       // @ts-ignore
-      expect(usernameRequiredErrorMessage).toEqual('Username is required');
+      expect(usernameRequiredErrorMessage).toContain('Username is required');
     });
   });
 
@@ -74,7 +74,7 @@ describe('LoginComponentFunctionalTestCases', () => {
       const passwordRequiredErrorMessage: HTMLInputElement = fixture.debugElement.nativeElement
         .querySelector('.invalid #password-feedback').innerHTML;
       // @ts-ignore
-      expect(passwordRequiredErrorMessage).toEqual('Password is required');
+      expect(passwordRequiredErrorMessage).toContain('Password is required');
     });
   });
 

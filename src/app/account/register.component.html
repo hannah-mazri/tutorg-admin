@@ -1,43 +1,68 @@
-﻿<div class="card">
-    <h4 class="card-header">Register</h4>
-    <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                    <div *ngIf="f.username.errors.required">Username is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Password is required</div>
-                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Register
-                </button>
-                <a routerLink="../login" class="btn btn-link">Cancel</a>
-            </div>
-        </form>
+﻿<stack class="w-screen h-screen">
+  <nav class="py-8 px-10 h-20 flex justify-between items-center">
+    <h1 class="font-bold text-3xl">ttr.</h1>
+    <div class="flex items-center">
+      <span>Already a member?</span>
+      <a routerLink="../login" class="py-1.5 px-4 font-semibold text-indigo-500 hover:underline">Login</a>
     </div>
-</div>
+  </nav>
+  <split class="w-full h-full justify-center items-center space-x-12">
+    <register-illustration></register-illustration>
+    <stack class="h-[32rem] w-[24rem] px-5">
+      <div>
+        <h2 class="font-bold text-3xl">Welcome!</h2>
+        <p class="text-gray-500 mt-1.5">Register to get access to <span class="font-semibold">ttr.</span> for free</p>
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="registerForm" class="mt-12">
+        <stack>
+          <label for="firstName" class="text-gray-800">First Name</label>
+          <input type="text" formControlName="firstName" id="firstName"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-2 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+          <div *ngIf="submitted && f.firstName.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="firstName-feedback" *ngIf="f.firstName.errors.required">
+              First Name is required
+            </div>
+          </div>
+        </stack>
+        <stack class="mt-8">
+          <label for="lastName" class="text-gray-800">Last Name</label>
+          <input type="text" formControlName="firstName" id="lastName"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-2 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+          <div *ngIf="submitted && f.lastName.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="lastName-feedback" *ngIf="f.lastName.errors.required">
+              Last Name is required
+            </div>
+          </div>
+        </stack>
+        <stack class="mt-8">
+          <label for="username" class="text-gray-800">Username</label>
+          <input type="text" formControlName="username" id="username"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-2 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="username-feedback" *ngIf="f.username.errors.required">
+              Username is required
+            </div>
+          </div>
+        </stack>
+        <stack class="mt-8">
+          <label for="password" class="text-gray-800">Password</label>
+          <input type="password" formControlName="password" id="password"
+                 class="form-control border border-gray-300 rounded-md mt-1 py-2 px-3"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid">
+            <div class="text-red-500 text-sm mt-1 ml-0.5" id="password-feedback" *ngIf="f.password.errors.required">
+              Password is required
+            </div>
+          </div>
+        </stack>
+        <button [disabled]="loading" class="mt-10 py-3 w-44 bg-indigo-400 hover:bg-indigo-500 transition rounded-3xl">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span class="uppercase text-white text-sm">Register</span>
+        </button>
+      </form>
+    </stack>
+  </split>
+</stack>
